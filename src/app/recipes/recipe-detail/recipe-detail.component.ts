@@ -22,7 +22,7 @@ export class RecipeDetailComponent implements OnInit {
 
         let recipes = this.recipeSvc.getRecipes();
 
-        this.recipe = recipes.find(item=>item.id === selectedRecipeId);
+        this.recipe = this.recipeSvc.getRecipeById(selectedRecipeId);
 
       }
     });

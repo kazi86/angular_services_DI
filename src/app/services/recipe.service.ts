@@ -29,6 +29,12 @@ export class RecipeService {
 
   }
 
+  public getRecipeById(selectedRecipeId:number){
+    let recipe  = this.getRecipes();
+
+    return recipe.find(item=>item.id === selectedRecipeId);
+  }
+
   public addIngredientsToShoppingList(ingredients: Ingredient[]){
 
     this.shoppingSvc.addIngredients(ingredients);

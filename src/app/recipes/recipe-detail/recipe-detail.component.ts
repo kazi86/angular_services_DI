@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Recipe } from '../recipe.model';
 import {RecipeService} from "../../services/recipe.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-recipe-detail',
@@ -9,11 +10,24 @@ import {RecipeService} from "../../services/recipe.service";
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-  @Input() recipe: Recipe;
+  public recipe: Recipe;
 
-  constructor(private recipeSvc : RecipeService) { }
+  constructor(private recipeSvc : RecipeService,private route : ActivatedRoute) { }
 
   public ngOnInit() {
+
+    this.route.params.subscribe({
+      next:(result)=>{
+        let selectedRecipeId = +result['id'];
+
+        let recipes = this.recipeSvc.getRecipes();
+
+        this.recipe = recipes.find(item=>item.id === selectedRecipeId);
+
+      }
+    });
+
+
   }
 
   public onSwitchToShoppingList(){

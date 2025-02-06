@@ -9,11 +9,11 @@ export class RecipeService {
   public recipeSelected = new EventEmitter<Recipe>();
 
   public recipes: Recipe[] = [
-    new Recipe('A Test Recipe',
+    new Recipe(1,'A Test Recipe',
       'This is simply a test',
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
       [new Ingredient('Meat',1)]),
-    new Recipe('Another Test Recipe',
+    new Recipe(2,'Another Test Recipe',
       'This is simply a test',
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
       [new Ingredient('Fires',20)])
